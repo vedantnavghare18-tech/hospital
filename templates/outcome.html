@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Outcome & Readmission</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<nav>
+
+    <h2>🏥 Hospital Analytics</h2>
+
+    <a href="/">Dashboard</a>
+    <a href="/patient">Patient Search</a>
+    <a href="/condition">Condition Analysis</a>
+    <a href="/treatment">Treatment & Cost</a>
+    <a href="/outcome">Outcome & Readmission</a>
+
+</nav>
+
+
+<div class="container">
+
+    <h1>🔄 Outcome & Readmission Analysis</h1>
+
+
+    <form>
+
+        <input
+            type="text"
+            name="search"
+            placeholder="Search condition"
+            value="{{ search }}"
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+
+    <div class="two-columns">
+
+        <div>
+
+            <h2>Patient Outcomes</h2>
+
+            <table>
+
+                <tr>
+                    <th>Outcome</th>
+                    <th>Patients</th>
+                </tr>
+
+                {% for outcome, count in outcome_count.items() %}
+
+                <tr>
+                    <td>{{ outcome }}</td>
+                    <td>{{ count }}</td>
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+
+        <div>
+
+            <h2>Readmission</h2>
+
+            <table>
+
+                <tr>
+                    <th>Readmission</th>
+                    <th>Patients</th>
+                </tr>
+
+                {% for status, count in readmission_count.items() %}
+
+                <tr>
+                    <td>{{ status }}</td>
+                    <td>{{ count }}</td>
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

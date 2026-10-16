@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Procedure Analysis</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav>
+    <h2>🏥 Hospital Data Analytics</h2>
+
+    <a href="/">Dashboard</a>
+    <a href="/patient">Patient Search</a>
+    <a href="/condition">Condition Analysis</a>
+    <a href="/treatment">Treatment & Cost</a>
+    <a href="/procedure">Procedure Analysis</a>
+    <a href="/outcome">Outcome & Readmission</a>
+</nav>
+
+<div class="container">
+
+    <h1>🩺 Procedure Analysis</h1>
+
+    <form method="GET" action="/procedure">
+
+        <input
+            type="text"
+            name="search"
+            placeholder="Enter procedure name"
+            value="{{ search }}"
+        >
+
+        <button type="submit">Search</button>
+
+    </form>
+
+    {% if search %}
+
+    <h2>Results for: {{ search }}</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>👥 Total Patients</h3>
+            <p>{{ total_patients }}</p>
+        </div>
+
+        <div class="card">
+            <h3>💰 Average Cost</h3>
+            <p>₹{{ average_cost }}</p>
+        </div>
+
+        <div class="card">
+            <h3>✅ Recovered Patients</h3>
+            <p>{{ recovered }}</p>
+        </div>
+
+        <div class="card">
+            <h3>🟡 Stable Patients</h3>
+            <p>{{ stable }}</p>
+        </div>
+
+    </div>
+
+    {% if total_patients == 0 %}
+
+    <h3>No procedure found.</h3>
+
+    {% endif %}
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

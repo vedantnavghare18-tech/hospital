@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Hospital Data Analytics</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<nav>
+
+    <h2>🏥 Hospital Analytics</h2>
+
+    <a href="/">Dashboard</a>
+    <a href="/patient">Patient Search</a>
+    <a href="/condition">Condition Analysis</a>
+    <a href="/treatment">Treatment & Cost</a>
+    <a href="/procedure">🩺 Procedure Analysis</a>
+    <a href="/outcome">Outcome & Readmission</a>
+
+</nav>
+
+
+<div class="container">
+
+    <h1>Hospital Data Analytics Dashboard</h1>
+
+    <p>
+        Analyze patients, medical conditions,
+        treatments, costs and outcomes.
+    </p>
+
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Patients</h3>
+            <h2>{{ total_patients }}</h2>
+        </div>
+
+
+        <div class="card">
+            <h3>Total Treatment Cost</h3>
+            <h2>${{ total_cost }}</h2>
+        </div>
+
+
+        <div class="card">
+            <h3>Average Stay</h3>
+            <h2>{{ average_stay }} Days</h2>
+        </div>
+
+
+        <div class="card">
+            <h3>Readmission Rate</h3>
+            <h2>{{ readmission_rate }}%</h2>
+        </div>
+
+
+        <div class="card">
+            <h3>Average Satisfaction</h3>
+            <h2>{{ average_satisfaction }}</h2>
+        </div>
+
+
+        <div class="card">
+            <h3>Most Common Condition</h3>
+            <h2>{{ most_common_condition }}</h2>
+        </div>
+
+    </div>
+
+
+    <div class="welcome">
+
+        <h2>Explore Hospital Data</h2>
+
+        <p>
+            Use the navigation menu above to search
+            patients and analyze hospital data.
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

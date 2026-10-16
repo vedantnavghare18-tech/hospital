@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Condition Analysis</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<nav>
+
+    <h2>🏥 Hospital Analytics</h2>
+
+    <a href="/">Dashboard</a>
+    <a href="/patient">Patient Search</a>
+    <a href="/condition">Condition Analysis</a>
+    <a href="/treatment">Treatment & Cost</a>
+    <a href="/outcome">Outcome & Readmission</a>
+
+</nav>
+
+
+<div class="container">
+
+    <h1>❤️ Condition Analysis</h1>
+
+
+    <form>
+
+        <input
+            type="text"
+            name="search"
+            placeholder="Search condition"
+            value="{{ search }}"
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+
+    <h2>Condition Statistics</h2>
+
+    <table>
+
+        <tr>
+            <th>Condition</th>
+            <th>Patients</th>
+            <th>Average Cost</th>
+            <th>Average Stay</th>
+        </tr>
+
+        {% for condition, count in condition_count.items() %}
+
+        <tr>
+
+            <td>{{ condition }}</td>
+
+            <td>{{ count }}</td>
+
+            <td>
+                ${{ average_cost[condition] }}
+            </td>
+
+            <td>
+                {{ average_stay[condition] }} days
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+
+</html>

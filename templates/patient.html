@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Patient Search</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<nav>
+
+    <h2>🏥 Hospital Analytics</h2>
+
+    <a href="/">Dashboard</a>
+    <a href="/patient">Patient Search</a>
+    <a href="/condition">Condition Analysis</a>
+    <a href="/treatment">Treatment & Cost</a>
+    <a href="/outcome">Outcome & Readmission</a>
+
+</nav>
+
+
+<div class="container">
+
+    <h1>🔎 Patient Search</h1>
+
+    <form>
+
+        <input
+            type="number"
+            name="patient_id"
+            placeholder="Enter Patient ID"
+            required
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+
+    {% if patient_data %}
+
+    <div class="patient-box">
+
+        <h2>Patient Details</h2>
+
+        <p><b>Patient ID:</b>
+            {{ patient_data["Patient_ID"] }}
+        </p>
+
+        <p><b>Age:</b>
+            {{ patient_data["Age"] }}
+        </p>
+
+        <p><b>Gender:</b>
+            {{ patient_data["Gender"] }}
+        </p>
+
+        <p><b>Condition:</b>
+            {{ patient_data["Condition"] }}
+        </p>
+
+        <p><b>Procedure:</b>
+            {{ patient_data["Procedure"] }}
+        </p>
+
+        <p><b>Treatment Cost:</b>
+            ${{ patient_data["Cost"] }}
+        </p>
+
+        <p><b>Length of Stay:</b>
+            {{ patient_data["Length_of_Stay"] }} days
+        </p>
+
+        <p><b>Readmission:</b>
+            {{ patient_data["Readmission"] }}
+        </p>
+
+        <p><b>Outcome:</b>
+            {{ patient_data["Outcome"] }}
+        </p>
+
+        <p><b>Satisfaction:</b>
+            {{ patient_data["Satisfaction"] }}/5
+        </p>
+
+    </div>
+
+    {% elif request.args.get("patient_id") %}
+
+    <p class="error">
+        Patient not found.
+    </p>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>
